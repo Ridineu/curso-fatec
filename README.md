@@ -1,2 +1,3 @@
-# curso-fatec
-Projetos e programas desenvolvidos no curso de ads na fatec.
+# ads-fatec
+
+Alguns códigos e programas desenvolvidos na fatec. Separados conforme linguagem.
