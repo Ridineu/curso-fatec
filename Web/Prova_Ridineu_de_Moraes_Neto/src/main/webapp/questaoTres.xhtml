@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3c.org/1999/xhtml"
+	xmlns:h="http://xmlns.jcp.org/jsf/html"
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:f="http://java.sun.com/jsf/core">
+<h:head>
+	<meta charset="UTF-8" />
+</h:head>
+<h:body>
+	<h1>Questão 3</h1>
+	<p>Ridineu de Moraes Neto - 0030481521033</p>
+	
+	<h:form id="formCarro">
+		<p:panelGrid columns="2">
+			<p:outputLabel value="Modelo: " />
+			<p:inputText size="20" value="#{carroBean.carro.modelo}" />
+			
+			<p:outputLabel value="Placa " />
+			<p:inputText size="20" value="#{carroBean.carro.placa}" />
+			
+			<p:outputLabel value="Ano: " />
+			<p:inputText size="20" value="#{carroBean.carro.ano}" />
+			
+			<p:outputLabel value="Documentos em dia:" />
+			<p:selectOneRadio value="#{carroBean.carro.docEmDia}">
+				<f:selectItem itemLabel="Sim" itemValue="Sim" />
+				<f:selectItem itemLabel="Não" itemValue="Não" />
+			</p:selectOneRadio>
+		</p:panelGrid>
+		<br />
+		<p:commandButton value="Salvar" action="#{carroBean.salvar}"
+			update=":formCarro,:tabCarro" />
+	</h:form>
+	<br />
+	<p:dataTable var="carro" value="#{carroBean.listaCarro}" id="tabCarro">
+		<p:column headerText="Modelo">
+			<p:outputLabel value="#{carro.modelo}" />
+		</p:column>
+		<p:column headerText="Placa">
+			<p:outputLabel value="#{carro.placa}" />
+		</p:column>
+		<p:column headerText="Ano">
+			<p:outputLabel value="#{carro.ano}" />
+		</p:column>
+		<p:column headerText="Documentos em dia">
+			<p:outputLabel value="#{carro.docEmDia}" />
+		</p:column>
+	</p:dataTable>
+	<p:commandButton value="Remover todos" action="#{carroBean.remover}"
+			update=":formCarro,:tabCarro" />	
+</h:body>
+</html>
