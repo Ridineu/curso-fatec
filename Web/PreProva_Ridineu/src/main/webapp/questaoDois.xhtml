@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3c.org/1999/xhtml"
+	xmlns:h="http://xmlns.jcp.org/jsf/html"
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:f="http://java.sun.com/jsf/core">
+<h:head>
+	<meta charset="UTF-8" />
+</h:head>
+<h:body>
+	<h1>Questão 2</h1>
+	<p>Ridineu de Moraes Neto - 0030481521033</p>
+
+	<h:form id="formCalc">
+		<p:panelGrid columns="2">
+			<p:outputLabel value="A:" />
+			<p:inputText size="10" value="#{bhaskaraBean.a}" />
+
+			<p:outputLabel value="B:" />
+			<p:inputText size="10" value="#{bhaskaraBean.b}" />
+
+			<p:outputLabel value="C:" />
+			<p:inputText size="10" value="#{bhaskaraBean.c}" />
+
+			<p:outputLabel value="X1" />
+			<p:outputLabel size="10" value="#{bhaskaraBean.x1}" />
+
+			<p:outputLabel value="X2" />
+			<p:outputLabel size="10" value="#{bhaskaraBean.x2}" />
+
+			<p:commandButton value="Calcular" action="#{bhaskaraBean.calcular}"
+				update=":formCalc" />
+
+		</p:panelGrid>
+	</h:form>
+
+	<p>
+		Observações: <br /> Se o valor de A for negativo, o calculo não
+		funcionará. <br /> Se o valor de x1 e x2 for -999.999, significa que
+		não existe raizes reais para estes valores.
+	</p>
+</h:body>
+</html>

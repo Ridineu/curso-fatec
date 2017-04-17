@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3c.org/1999/xhtml"
+	xmlns:h="http://xmlns.jcp.org/jsf/html"
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:f="http://java.sun.com/jsf/core">
+<h:head>
+	<meta charset="UTF-8" />
+</h:head>
+<h:body>
+	<h1>Questão 4</h1>
+	<p>Ridineu de Moraes Neto - 0030481521033</p>
+
+	<h:form id="formCidade">
+		<p:panelGrid columns="2">
+			<p:outputLabel value="Nome: " />
+			<p:inputText size="15" value="#{cidadeBean.cidade.nome}" />
+			<p:outputLabel value="Estado: " />
+			<p:inputText size="15" value="#{cidadeBean.cidade.estado}" />
+			<p:outputLabel value="Ano fundação: " />
+			<p:inputText size="15" value="#{cidadeBean.cidade.anoFund}" />
+			<p:outputLabel value="População: " />
+			<p:inputText size="15" value="#{cidadeBean.cidade.populacao}" />
+		</p:panelGrid>
+		<p:commandButton value="Salvar" action="#{cidadeMB.salvar}"
+			update=":formCidade,:tableCidade" />
+	</h:form>
+
+	<p:dataTable var="cid" value="#{cidadeBean.listaCid}" id="tableCidade">
+		<p:column headerText="Código">
+			<p:outputLabel value="#{cid.codigo}" />
+		</p:column>
+		<p:column headerText="Nome">
+			<p:outputLabel value="#{cid.nome}" />
+		</p:column>
+		<p:column headerText="Estado">
+			<p:outputLabel value="#{cid.estado}" />
+		</p:column>
+		<p:column headerText="Ano de fundação">
+			<p:outputLabel value="#{cid.anoFund}" />
+		</p:column>
+		<p:column headerText="População">
+			<p:outputLabel value="#{cid.populacao}" />
+		</p:column>
+	</p:dataTable>
+
+
+
+</h:body>
+</html>
+

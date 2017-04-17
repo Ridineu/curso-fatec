@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>Questão 1</title>
+<style>
+body {
+	background-color: #ebebe0;
+	text-align: center;
+}
+</style>
+<script>
+	var i = 1;
+	function troca(){
+		if(i == 1)
+			document.getElementById("semafaro").src = "imagens/amarelo.jpg";
+		else
+			if(i == 2)
+				document.getElementById("semafaro").src = "imagens/verde.jpg";
+			else{
+				document.getElementById("semafaro").src = "imagens/vermelho.jpg";
+				i=0;
+			}
+		i++;				
+	}
+</script>
+</head>
+<body>
+	<h1>Questão 1</h1>
+	<p>Ridineu de Moraes Neto - 0030481521033</p>
+	<br />	
+	<img id="semafaro" src="imagens/vermelho.jpg">
+	<br />
+	<button type="button" onclick="troca()">Trocar estado</button>
+</body>
+</html>
