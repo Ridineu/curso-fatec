@@ -1,4 +1,4 @@
-package fatec.poo.model;
+﻿package fatec.poo.model;
 
 /**
  *
@@ -8,13 +8,14 @@ public class Departamento {
     private String Sigla, Nome;
     private Funcionario funcionarios[];
     private int qtdeFunc;
-    
+        
     public Departamento(String Sigla, String Nome) {
         this.Sigla = Sigla;
         this.Nome = Nome;
         funcionarios = new Funcionario[5];
+        
     }
-
+    
     public String getSigla() {
         return Sigla;
     }
@@ -29,7 +30,7 @@ public class Departamento {
     
     public void listar(){
         System.out.println("\nSigla: " + Sigla + "\nNome: " + Nome + "\nQuantidade de funcionários: " + qtdeFunc);
-        System.out.println("Registro |  Nome  | Tipo");
+        System.out.println("Registro | Nome  | Tipo");
         for(int i=0; i<qtdeFunc; i++){
             System.out.print(funcionarios[i].getRegistro() + " | " + funcionarios[i].getNome() + " | Funcionário ");
             if(funcionarios[i] instanceof FuncionarioComissionado){
@@ -42,5 +43,6 @@ public class Departamento {
                 }                    
             }
         }
+        System.out.println("");
     }
 }
