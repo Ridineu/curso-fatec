@@ -21,4 +21,8 @@ public class Circulo {
     public double calcDiametro(){
         return 2 * Raio;
     }
+
+    public double getRaio(){
+	return Raio;	
+    }
 }

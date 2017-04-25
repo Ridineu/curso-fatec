@@ -1,4 +1,4 @@
-package fatec.poo.model;
+﻿package fatec.poo.model;
 
 /**
  *
@@ -14,7 +14,7 @@ public class Turma {
     public Turma(String sigla, int qtdVagas) {
         this.sigla = sigla;
         this.qtdVagas = qtdVagas;
-        alunos = new Aluno[5];
+        alunos = new Aluno[qtdVagas];
     }
 
     public void setCurso(Curso curso) {
@@ -36,6 +36,10 @@ public class Turma {
     public void addAluno(Aluno aluno){
         alunos[qntAluno++] = aluno;
     }
+
+    public int getQtdVagas() {
+        return qtdVagas;
+    } 
     
     public void listarAlunos(){
         System.out.println("Lista de Frequência");
