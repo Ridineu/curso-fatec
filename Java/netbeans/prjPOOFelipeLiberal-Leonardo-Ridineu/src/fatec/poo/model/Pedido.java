@@ -63,6 +63,10 @@ public class Pedido{
     public void addItemPedido(ItemPedido itempedido){
         itensPedido.add(itempedido);
         itempedido.setPedido(this);
+        atualizaSaldo(itempedido);
+    }
+    
+    public void atualizaSaldo(ItemPedido itempedido){
         cliente.setLimiteDisp(cliente.getLimiteDisp() -
                 (itempedido.getProduto().getPrecoUnit() * itempedido.getQtdeVendida()));
     }

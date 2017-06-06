@@ -20,7 +20,6 @@ public class ItemPedido{
 
     public void setQtdeVendida(int qtdeVendida) {
         this.qtdeVendida = qtdeVendida;
-        produto.setQtdeDisponivel(produto.getQtdeDisponivel() - qtdeVendida);
     }
 
     public Produto getProduto() {
@@ -38,4 +37,8 @@ public class ItemPedido{
     public void setPedido(Pedido pedido) {
         this.pedido = pedido;
     }    
+    
+    public void atualizaEstoque(int qtd){
+	    produto.setQtdeDisponivel(produto.getQtdeDisponivel() - qtd);		
+    }
 }

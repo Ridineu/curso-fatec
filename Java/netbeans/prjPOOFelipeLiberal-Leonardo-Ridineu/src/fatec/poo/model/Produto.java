@@ -8,6 +8,7 @@ public class Produto{
     public Produto(int codigo, String descricao) {
         this.codigo = codigo;
         this.descricao = descricao;
+        
     }
 
     public int getCodigo() {
@@ -32,6 +33,10 @@ public class Produto{
 
     public String getDescricao() {
         return descricao;
+    }
+    
+    public void setDescricao(String descricao) {
+        this.descricao = descricao;
     }
 
     public double getPrecoUnit() {
