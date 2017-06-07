@@ -1,0 +1,12 @@
+%hhd -> char			- 
+%hd  -> short int
+%d   -> long int
+%lld -> long long int		
+%i   -> int    			- varia conforme a plataforma
+
+
+--
+
+%s      -> string, até o primeiro espaço OU fim de linha
+%[^\n]  -> ler toda entrada até que ocorra uma quebra de linha
+
