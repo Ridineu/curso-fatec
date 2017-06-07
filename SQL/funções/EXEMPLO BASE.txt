@@ -1,0 +1,44 @@
+fuNÇÕES
+
+Uma função é semelhante a uma store procedure - também aceita parâmetros.
+As diferenças são que funções sempre retornam valores e são chamadas como parte de uma execução.
+
+Ex1) 
+Create function calcdobro(p1 number)
+return number
+as 
+	p2 number;
+begin	
+	p2 := p1 * 2;
+	return p2;
+end;
+
+P/ executar a função 
+
+1) Select crmmedico, calcdobro(vrconsulta) from medico;
+
+OU 
+
+2)
+ BEGIN
+	dbMs_output.puT_line(CALCDOBRO(50));
+   end;
+
+PARA ATIVAR O OUTPUT UTILIZAR: SETSERVEROUTPUT ON
+
+
+
+Ex2)
+CREATE OR REPLACE FUNCTION FN_DEV_DESCR(PCOD PRODUTO.COD_PRODUTO%TYPE)
+RETURN VARCHAR2
+AS
+	VDESCR PRODUTO.DESCRICAO%TYPE;
+BEGIN
+	SELECT DESCRICAO INTO VDESCR
+	FROM PRODUTO
+	WHERE COD_PRODUTO = PCOD;
+	REUTNR VDESCR;
+END;
+
+P/ EXECUTAR: SELECT NUM_PEDIDO, COD_PRODUTO, FN_DV_DESCR(COD_PRODUTO
+	     FROM ITEM_PEDIDO;
