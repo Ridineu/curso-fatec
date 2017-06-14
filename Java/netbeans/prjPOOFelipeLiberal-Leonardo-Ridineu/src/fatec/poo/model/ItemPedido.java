@@ -38,7 +38,11 @@ public class ItemPedido{
         this.pedido = pedido;
     }    
     
-    public void atualizaEstoque(int qtd){
-	    produto.setQtdeDisponivel(produto.getQtdeDisponivel() - qtd);		
+    public void atualizaEstoque(){
+	produto.setQtdeDisponivel(produto.getQtdeDisponivel() - qtdeVendida);		
+    }
+    
+    public double calcCustoItem(){
+       return (qtdeVendida * produto.getPrecoUnit());
     }
 }

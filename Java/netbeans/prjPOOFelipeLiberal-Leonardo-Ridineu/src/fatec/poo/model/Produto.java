@@ -7,8 +7,7 @@ public class Produto{
 
     public Produto(int codigo, String descricao) {
         this.codigo = codigo;
-        this.descricao = descricao;
-        
+        this.descricao = descricao;        
     }
 
     public int getCodigo() {

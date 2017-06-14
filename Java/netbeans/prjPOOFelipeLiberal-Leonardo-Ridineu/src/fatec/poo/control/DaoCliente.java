@@ -31,7 +31,7 @@ public class DaoCliente {
                       
             ps.execute();
         } catch (SQLException ex) {
-             System.out.println(ex.toString());   
+             System.out.println(ex.toString() + "em daoCliente");   
         }
     }
     
@@ -55,7 +55,7 @@ public class DaoCliente {
            
             ps.execute();
         } catch (SQLException ex) {
-             System.out.println(ex.toString());   
+            System.out.println(ex.toString() + "em daoCliente");   
         }
     }
     
@@ -82,7 +82,7 @@ public class DaoCliente {
             }
         }
         catch (SQLException ex) { 
-             System.out.println(ex.toString());   
+            System.out.println(ex.toString() + "em daoCliente");    
         }
         return (c);
     }
@@ -96,7 +96,7 @@ public class DaoCliente {
                       
             ps.execute();
         } catch (SQLException ex) {
-             System.out.println(ex.toString());   
+            System.out.println(ex.toString() + "em daoCliente");  
         }
     }
 }

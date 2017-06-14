@@ -422,7 +422,7 @@ public class guiCliente extends javax.swing.JFrame {
     }//GEN-LAST:event_btnExcluirActionPerformed
 
     private void formWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowOpened
-        conexao = new Conexao("BD1521022","BD1521022");
+        conexao = new Conexao("BD1521033","BD1521033");
         conexao.setDriver("oracle.jdbc.driver.OracleDriver");
         conexao.setConnectionString("jdbc:oracle:thin:@apolo:1521:xe");
         daoCliente = new DaoCliente(conexao.conectar());
@@ -503,25 +503,31 @@ public class guiCliente extends javax.swing.JFrame {
     private boolean primeiroDigito(String CPF){
         int soma=0;
         
-        for(int i=0; i<9; i++){
+        try {
+           for(int i=0; i<9; i++){
             soma += Integer.parseInt(CPF.substring(i, i+1)) * i+1;
-        }
-        soma %= 11;
-        if(soma == 10)
-            soma = 0;
-        
+            }
+            soma %= 11;
+            if(soma == 10)
+                soma = 0;  
+        } catch (Exception e) {
+            soma = 11;
+        }  
         return soma == Integer.parseInt(CPF.substring(9,10));
     }
     
     private boolean segundoDigito(String CPF){
         int soma=0;
         
-        for(int i=0, j=11; j>=2; i++, j--)
-            soma += Integer.parseInt(CPF.substring(i,i+1)) * j;
-        soma = (soma * 10) % 11;
-        if(soma == 10)
-            soma = 0;
-        
+        try {
+            for(int i=0, j=11; j>=2; i++, j--)
+                soma += Integer.parseInt(CPF.substring(i,i+1)) * j;
+            soma = (soma * 10) % 11;
+            if(soma == 10)
+                soma = 0;
+        } catch (Exception e) {
+            soma = 11;
+        }        
         return soma == Integer.parseInt(CPF.substring(10));
     }
 

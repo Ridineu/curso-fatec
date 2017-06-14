@@ -273,49 +273,12 @@ public class guiVendedor extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
-    
-    private boolean validaCPF(String CPF){         
-        if(
-           CPF.equals("00000000000") || CPF.equals("11111111111") || CPF.equals("22222222222") ||           
-           CPF.equals("33333333333") || CPF.equals("33333333333") || CPF.equals("44444444444") ||
-           CPF.equals("55555555555") || CPF.equals("66666666666") || CPF.equals("77777777777") ||
-           CPF.equals("88888888888") || CPF.equals("99999999999") || CPF.length() != 11){
-            return false;
-        }
-                  
-        return primeiroDigito(CPF) && segundoDigito(CPF);
-    }
-    
-    private boolean primeiroDigito(String CPF){
-        int soma=0;
-        
-        for(int i=0; i<9; i++){
-            soma += Integer.parseInt(CPF.substring(i, i+1)) * i+1;
-        }
-        soma %= 11;
-        if(soma == 10)
-            soma = 0;
-        
-        return soma == Integer.parseInt(CPF.substring(9,10));
-    }
-    
-    private boolean segundoDigito(String CPF){
-        int soma=0;
-        
-        for(int i=0, j=11; j>=2; i++, j--)
-            soma += Integer.parseInt(CPF.substring(i,i+1)) * j;
-        soma = (soma * 10) % 11;
-        if(soma == 10)
-            soma = 0;
-        
-        return soma == Integer.parseInt(CPF.substring(10));
-    }
-    
+            
     private void btnConsultarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnConsultarActionPerformed
         vendedor = null;        
         String cpf = mskCPF.getText().replace(".", "").replace("-", "");
              
-        if(!validaCPF(cpf)){
+        if(validaCPF(cpf)){
             JOptionPane.showMessageDialog(null,"CPF informado inválido.\nPor favor, tente novamente.");
             mskCPF.setText("");
             mskCPF.requestFocus();
@@ -442,7 +405,50 @@ public class guiVendedor extends javax.swing.JFrame {
         btnIncluir.setEnabled(habilita);
         btnExcluir.setEnabled(habilita);
     }
-
+    
+    private boolean validaCPF(String CPF){         
+        if(
+           CPF.equals("00000000000") || CPF.equals("11111111111") || CPF.equals("22222222222") ||           
+           CPF.equals("33333333333") || CPF.equals("33333333333") || CPF.equals("44444444444") ||
+           CPF.equals("55555555555") || CPF.equals("66666666666") || CPF.equals("77777777777") ||
+           CPF.equals("88888888888") || CPF.equals("99999999999") || CPF.length() != 11){
+            return false;
+        }
+                  
+        return primeiroDigito(CPF) && segundoDigito(CPF);
+    }
+    
+    private boolean primeiroDigito(String CPF){
+        int soma=0;
+        
+        try {
+           for(int i=0; i<9; i++){
+            soma += Integer.parseInt(CPF.substring(i, i+1)) * i+1;
+            }
+            soma %= 11;
+            if(soma == 10)
+                soma = 0;  
+        } catch (Exception e) {
+            soma = 11;
+        }  
+        return soma == Integer.parseInt(CPF.substring(9,10));
+    }
+    
+    private boolean segundoDigito(String CPF){
+        int soma=0;
+        
+        try {
+            for(int i=0, j=11; j>=2; i++, j--)
+                soma += Integer.parseInt(CPF.substring(i,i+1)) * j;
+            soma = (soma * 10) % 11;
+            if(soma == 10)
+                soma = 0;
+        } catch (Exception e) {
+            soma = 11;
+        }        
+        return soma == Integer.parseInt(CPF.substring(10));
+    }
+        
     /**
      * @param args the command line arguments
      */
@@ -508,6 +514,7 @@ public class guiVendedor extends javax.swing.JFrame {
     private javax.swing.JTextField txtTaxaComissao;
     private javax.swing.JTextField txtTelefone;
     // End of variables declaration//GEN-END:variables
+    
     private Vendedor vendedor;
     private DaoVendedor daovendedor;
     private Conexao conexao;

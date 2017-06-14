@@ -35,7 +35,7 @@ public class DaoVendedor {
             
             ps.execute();
         } catch (SQLException e) {
-            System.out.println(e.toString());
+            System.out.println(e.toString() + " em daoVendedor");
         }
     }
     
@@ -60,7 +60,7 @@ public class DaoVendedor {
             
             ps.execute();
         } catch (SQLException e) {
-            System.out.println(e.toString());
+            System.out.println(e.toString() + " em daoVendedor");
         }
     }
     
@@ -85,7 +85,7 @@ public class DaoVendedor {
                 vendedor.setComissao(rs.getDouble("Comissao"));
             }
         } catch (SQLException e) {
-            System.out.println(e.toString()); 
+            System.out.println(e.toString() + " em daoVendedor");
         }
         
         return (vendedor);
@@ -100,7 +100,7 @@ public class DaoVendedor {
             ps.execute();
             
         } catch (SQLException e) {
-            System.out.println(e.toString()); 
+           System.out.println(e.toString() + " em daoVendedor");
         }
     }
 }

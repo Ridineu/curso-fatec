@@ -63,11 +63,21 @@ public class Pedido{
     public void addItemPedido(ItemPedido itempedido){
         itensPedido.add(itempedido);
         itempedido.setPedido(this);
-        atualizaSaldo(itempedido);
+        itempedido.atualizaEstoque();
+        cliente.attLimitDisp(itempedido.calcCustoItem());
     }
-    
-    public void atualizaSaldo(ItemPedido itempedido){
-        cliente.setLimiteDisp(cliente.getLimiteDisp() -
-                (itempedido.getProduto().getPrecoUnit() * itempedido.getQtdeVendida()));
+
+    public void setItensPedido(ArrayList<ItemPedido> itensPedido) {
+        this.itensPedido = itensPedido;
+    }
+       
+    public double calcCustoTotal(){
+        double custoTotal=0;
+        
+        for(int i=0; i<itensPedido.size(); i++){
+            custoTotal += itensPedido.get(i).calcCustoItem();
+        }
+        
+        return custoTotal;
     }
 }

@@ -29,12 +29,16 @@ public class Cliente extends Pessoa{
         return pedidos;
     } 
 
-    public void setLimiteDisp(double limiteDisp) {
-        this.limiteDisp = limiteDisp;
-    } 
+    public void attLimitDisp(double valor){
+        this.limiteDisp -= valor;
+    }
 
     public void setLimiteCred(double limiteCred) {
         this.limiteDisp = this.limiteCred = limiteCred;
+    }
+
+    public void setLimiteDisp(double limiteDisp) {
+        this.limiteDisp = limiteDisp;
     }
     
     
