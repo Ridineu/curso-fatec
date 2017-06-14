@@ -89,9 +89,57 @@ public class DaoPedido {
             
             for(int i=0; i<pedido.getItensPedido().size(); i++){
                 daoitem.inserir(pedido.getItensPedido().get(i));
-            }            
+            }
+            
+        } catch (SQLException e) {
+            System.out.println(e.toString() + " em daopedido");
+        }
+    }
+    
+    public void excluir(Pedido pedido){
+        PreparedStatement ps = null;
+        
+        try {
+            pedido = consultar(pedido.getNumero());
+            pedido.getCliente().setLimiteDisp(pedido.getCliente().getLimiteDisp() +
+                        pedido.calcCustoTotal());
+            
+            daocliente.alterar(pedido.getCliente());
+            
+            for(int i=0; i<pedido.getItensPedido().size(); i++){
+                daoitem.excluir(pedido.getItensPedido().get(i));
+            }
+             
+            ps = connection.prepareStatement("DELETE FROM tbpedido WHERE Numero = ?");
+            ps.setInt(1, pedido.getNumero());
+            
+            ps.execute();
+            
+        } catch (SQLException e) {
+            System.out.println(e.toString() + " em daopedido");
+        }
+        
+    }
+    
+    public void alterar(Pedido pedido){
+        PreparedStatement ps = null;
+        try {            
+           daocliente.alterar(pedido.getCliente());
+           
+           Pedido pedidoOriginal = consultar(pedido.getNumero());
+           
+           for(int i=0; i<pedidoOriginal.getItensPedido().size(); i++){
+               daoitem.excluir(pedidoOriginal.getItensPedido().get(i));
+           } 
+           
+           for(int i=0; i<pedido.getItensPedido().size(); i++){
+               daoitem.inserir(pedido.getItensPedido().get(i));
+           }
+            
+           daocliente.alterar(pedido.getCliente());
         } catch (Exception e) {
             System.out.println(e.toString() + " em daopedido");
         }
     }
+  
 }

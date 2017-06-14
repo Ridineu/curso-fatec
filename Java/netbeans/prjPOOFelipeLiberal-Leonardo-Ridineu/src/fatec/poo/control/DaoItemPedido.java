@@ -32,7 +32,7 @@ public class DaoItemPedido {
     public ArrayList<ItemPedido> consultar(Integer numeroPedido){
         ArrayList<ItemPedido> arrayItens = new ArrayList<ItemPedido>();
         ItemPedido itempedido;
-        
+        int i=0;
         PreparedStatement ps = null;
         
         try {
@@ -42,7 +42,7 @@ public class DaoItemPedido {
             ResultSet rs = ps.executeQuery();
             
             while(rs.next()){
-                itempedido = new ItemPedido(0, rs.getInt("QtVendida"));
+                itempedido = new ItemPedido(++i, rs.getInt("QtVendida"));
                 itempedido.setProduto(daoproduto.consultar(rs.getInt("CodigoProduto")));
                 arrayItens.add(itempedido);
             }
@@ -87,6 +87,8 @@ public class DaoItemPedido {
                       
             ps.execute();
             
+            itempedido.getProduto().setQtdeDisponivel(itempedido.getProduto().getQtdeDisponivel() +
+                                        itempedido.getQtdeVendida());                   
             daoproduto.alterar(itempedido.getProduto());
             
         } catch (SQLException ex) {

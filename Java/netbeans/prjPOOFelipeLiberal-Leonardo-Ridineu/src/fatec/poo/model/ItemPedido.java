@@ -45,4 +45,8 @@ public class ItemPedido{
     public double calcCustoItem(){
        return (qtdeVendida * produto.getPrecoUnit());
     }
+       
+    public boolean a(ItemPedido itempedido){
+        return true;
+    }
 }
