@@ -69,11 +69,12 @@ int main(){
 	return 0;
 }
 
-char bfs(TCelula partida, short int n, short int m, short int vidas){
-	short int i=0;
+char bfs(TCelula partida, int n, int m, int vidas){
+	int f=0, i=0;
 	TCelula vez;
-	f=0;
-	fila[f++] = partida;	
+	
+	fila[f++] = partida;
+	mapa[partida.x][partida.y] = JAFOI;		
 	
 	while (f != i){	
 	
@@ -81,38 +82,45 @@ char bfs(TCelula partida, short int n, short int m, short int vidas){
 				
 		if(mapa[vez.x][vez.y] == FIM)
 			return TRUE;
-		
-		mapa[vez.x][vez.y] = JAFOI;	
-		
-		/*
-		int j;
-		for(j=0; j<n; j++){
-			printf("%s\n", mapa[j]);
-		}
-		printf("\n\n");
-		*/
-		
+					
 		vez.movimento += 1;
 		if(vez.movimento <= vidas){
 						
 			vez.x++;
-			if(vez.x < n && posicaoValida(mapa[vez.x][vez.y]))								
+			if(vez.x < n && posicaoValida(vez)){
 				fila[f++] = vez;
+				if(mapa[vez.x][vez.y] == FIM)
+					return TRUE;
+				mapa[vez.x][vez.y] = JAFOI;	
+			}
 			vez.x--;
 			
 			vez.x--;
-			if(vez.x >= 0 && posicaoValida(mapa[vez.x][vez.y]))								
+			if(vez.x >= 0 && posicaoValida(vez)){
 				fila[f++] = vez;
+				if(mapa[vez.x][vez.y] == FIM)
+					return TRUE;
+				mapa[vez.x][vez.y] = JAFOI;	
+			}								
+				
 			vez.x++;
 			
 			vez.y++;
-			if(vez.y < m && posicaoValida(mapa[vez.x][vez.y]))								
+			if(vez.y < m && posicaoValida(vez)){
 				fila[f++] = vez;
+				if(mapa[vez.x][vez.y] == FIM)
+					return TRUE;
+				mapa[vez.x][vez.y] = JAFOI;	
+			}
 			vez.y--; 			
 			
 			vez.y--; 	
-			if(vez.y >= 0 && posicaoValida(mapa[vez.x][vez.y]))											
+			if(vez.y >= 0 && posicaoValida(vez)){
 				fila[f++] = vez;
+				if(mapa[vez.x][vez.y] == FIM)
+					return TRUE;
+				mapa[vez.x][vez.y] = JAFOI;	
+			}
 			vez.y++;			
 		}		
 		
