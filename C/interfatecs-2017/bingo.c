@@ -3,11 +3,11 @@
 #include <stdlib.h>
 #include <string.h>
 
-#define MAX_COLUNA 9
-#define MAX_LINHA 9
+#define DESENHO       0
+#define MAX_COLUNA    9
+#define MAX_LINHA     9
+#define MAX_BOLAS    99
 #define MAX_JOGADOR 100
-#define MAX_BOLAS 100
-#define DESENHO 0
 
 typedef struct{int vetor[MAX_BOLAS], index, turno;}TEstrutura;
 
@@ -16,24 +16,25 @@ int main(){
 	TEstrutura winners, bolas;
 	int cartelas[MAX_JOGADOR][MAX_LINHA][MAX_COLUNA], il, ic, ik;
 	int i, j, k, v, r, f, e, bingo;	
+	
 	scanf("%d %d %d", &il, &ic, &ik);
 	
 	for(k=0; k<ik; k++)
 		for(i=0; i<il; i++)
 			for(j=0; j<ic; j++)
 				scanf("%d", &cartelas[k][i][j]);
-				
-	/*		
+	
+	#ifdef DEBUG
 	for(k=0; k<ik; k++){
 		printf("%da cartela\n", k+1);
 		for(i=0; i<il; i++){
 			for(j=0; j<ic; j++)	
-				printf("%d ", cartelas[k][i][j]);
+				printf("%03d ", cartelas[k][i][j]);
 			printf("\n");
 		}
 		printf("\n");
 	}
-    */
+	#endif
 	
 	scanf("%d", &v);
 	
@@ -48,22 +49,22 @@ int main(){
 						cartelas[k][i][j] = DESENHO;
 						f=1;
 					}
-	
+				
 		for(k=0; f && k<ik && winners.index < 2; k++){
 		
 			//linhas
 			for(i=0, e=0, bingo=0; i<il && !bingo; i++, e=0){
 				for(j=0; j<ic && !e; j++)	
 					if(cartelas[k][i][j] != DESENHO)
-						e++;
+						e=1;
 				bingo = !e;		
 			}
 					
 			//colunas		
 			for(i=0, e=0; i<ic && !bingo; i++, e=0){
 				for(j=0; j<il && !e; j++)
-					if(cartelas[k][i][j] != DESENHO)
-						e++;
+					if(cartelas[k][j][i] != DESENHO)
+						e=1;
 				bingo = !e;	
 			}	
 							
@@ -84,5 +85,3 @@ int main(){
 	
 	return 0;
 }
-
-
